@@ -660,6 +660,56 @@ header {
 
 
 /* =========================================
+   UNIT 8 - NAMED GAMES
+========================================= */
+
+.unit8-games-list {
+    grid-column: 1 / -1;
+    margin-top: 10px;
+    padding: 12px;
+    background: #f7f0df;
+    border: 1px solid #e7ddcc;
+    border-radius: 12px;
+    display: grid;
+    gap: 9px;
+}
+
+.unit8-game-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    text-decoration: none;
+    background: #fffdf8;
+    color: #4b1717;
+    border: 1px solid #dfd1b9;
+    border-radius: 9px;
+    padding: 12px 14px;
+    font-size: 13px;
+    font-weight: 650;
+    transition: 0.25s;
+}
+
+.unit8-game-button:hover {
+    background: #f4ead4;
+    transform: translateX(3px);
+    border-color: #b8860b;
+}
+
+.game-arrow {
+    color: #b8860b;
+    font-size: 18px;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+    .unit8-games-list { padding: 10px; }
+    .unit8-game-button { font-size: 12px; padding: 11px; }
+}
+
+
+/* =========================================
    FLOATING WHATSAPP
 ========================================= */
 
@@ -1539,8 +1589,17 @@ const grade10Links = [
         notes: "https://drive.google.com/drive/folders/1ACV3WgsvMwqEz3e7QeKKmtwVOxC71hYQ?usp=sharing",
         mcq: "YOUR_LINK_HERE",
         paper: "YOUR_LINK_HERE",
-        games: "YOUR_LINK_HERE"
+
+        /* UNIT 8 - NAMED GAMES */
+        games: [
+            { name: "கண்டி இராச்சியம் - Game 01", link: "YOUR_LINK_HERE" },
+            { name: "கண்டி இராச்சியம் - Game 02", link: "YOUR_LINK_HERE" },
+            { name: "கண்டி இராச்சியம் - Game 03", link: "YOUR_LINK_HERE" },
+            { name: "கண்டி இராச்சியம் - Game 04", link: "YOUR_LINK_HERE" },
+            { name: "கண்டி இராச்சியம் - Game 05", link: "YOUR_LINK_HERE" }
+        ]
     },
+
 
     /* 9. மறுமலர்ச்சி */
 
@@ -1829,11 +1888,18 @@ function showPage(pageId) {
 
 
 
+function toggleUnit8Games() {
+    const gamesList = document.getElementById("unit8Games");
+    if (!gamesList) return;
+    gamesList.style.display = gamesList.style.display === "none" ? "grid" : "none";
+}
+
+
 /* =====================================================
    CREATE GRADE RESOURCE BUTTONS
 ===================================================== */
 
-function createResourceButtons(data) {
+function createResourceButtons(data, index) {
 
     return `
 
@@ -1877,14 +1943,22 @@ function createResourceButtons(data) {
         </a>
 
 
-        <a
-            href="${data.games}"
-            target="_blank"
-            class="resource-button game">
-
-            🎮 Games
-
-        </a>
+        ${index === 7 && Array.isArray(data.games) ? `
+            <button type="button" class="resource-button game" onclick="toggleUnit8Games()">
+                🎮 Games (${data.games.length})
+            </button>
+            <div id="unit8Games" class="unit8-games-list" style="display:none;">
+                ${data.games.map(function(game) {
+                    return `<a href="${game.link}" target="_blank" class="unit8-game-button">
+                        <span>🎮 ${game.name}</span><span class="game-arrow">→</span>
+                    </a>`;
+                }).join("")}
+            </div>
+        ` : `
+            <a href="${data.games}" target="_blank" class="resource-button game">
+                🎮 Games
+            </a>
+        `}
 
     `;
 
@@ -1924,7 +1998,7 @@ grade10Links.forEach(function(data, index) {
 
             <div class="resource-buttons">
 
-                ${createResourceButtons(data)}
+                ${createResourceButtons(data, index)}
 
             </div>
 
