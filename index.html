@@ -1,0 +1,2085 @@
+<!DOCTYPE html>
+<html lang="ta">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>History Tutor</title>
+
+<style>
+
+/* =========================================
+   BASIC
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    background: #f7f3ea;
+    color: #29231d;
+    min-height: 100vh;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+header {
+    background: linear-gradient(135deg, #4b1717, #7b2525);
+    color: white;
+    padding: 18px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+.logo h1 {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.logo span {
+    display: block;
+    font-size: 11px;
+    opacity: 0.8;
+    margin-top: 2px;
+}
+
+
+/* =========================================
+   HEADER HOME BUTTON
+========================================= */
+
+.header-home {
+    border: none;
+    background: rgba(255,255,255,0.15);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.header-home:hover {
+    background: rgba(255,255,255,0.28);
+}
+
+
+/* =========================================
+   PAGE SYSTEM
+========================================= */
+
+.page {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+
+    padding: 80px 7% 70px;
+
+    background:
+        linear-gradient(
+            rgba(65,20,20,0.91),
+            rgba(111,35,35,0.89)
+        ),
+
+        url("https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&w=1800&q=80");
+
+    background-size: cover;
+    background-position: center;
+
+    color: white;
+}
+
+.hero-content {
+    max-width: 850px;
+}
+
+.hero small {
+
+    background: rgba(218,165,32,0.25);
+
+    border: 1px solid rgba(218,165,32,0.45);
+
+    padding: 7px 14px;
+
+    border-radius: 30px;
+
+    display: inline-block;
+
+    margin-bottom: 18px;
+
+    font-size: 13px;
+}
+
+.hero h2 {
+
+    font-size: clamp(38px, 6vw, 70px);
+
+    line-height: 1.05;
+
+    margin-bottom: 20px;
+}
+
+.hero p {
+
+    max-width: 650px;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    opacity: 0.9;
+}
+
+.hero-button {
+
+    margin-top: 30px;
+
+    padding: 14px 24px;
+
+    background: #d4a72c;
+
+    color: #3b2115;
+
+    border: none;
+
+    border-radius: 10px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.hero-button:hover {
+
+    transform: translateY(-3px);
+
+    background: #e1b83e;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.container {
+
+    width: 86%;
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 55px 0 70px;
+}
+
+.section-title {
+
+    text-align: center;
+
+    margin-bottom: 40px;
+}
+
+.section-title h2 {
+
+    font-size: 32px;
+
+    color: #4b1717;
+
+    margin-bottom: 10px;
+}
+
+.section-title p {
+
+    color: #756b60;
+}
+
+
+/* =========================================
+   MAIN CATEGORY CARDS
+========================================= */
+
+.category-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+.category-card {
+
+    background: #fffdf8;
+
+    border-radius: 20px;
+
+    padding: 35px 30px;
+
+    border: 1px solid #e7ddcc;
+
+    box-shadow:
+        0 8px 25px rgba(73,45,20,0.07);
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    position: relative;
+
+    overflow: hidden;
+
+    text-align: center;
+}
+
+.category-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 5px;
+
+    background: #b8860b;
+}
+
+.category-card:hover {
+
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 15px 35px rgba(73,45,20,0.14);
+}
+
+.category-icon {
+
+    width: 75px;
+
+    height: 75px;
+
+    background: #f4ead4;
+
+    border-radius: 20px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 36px;
+
+    margin: 0 auto 20px;
+}
+
+.category-card h3 {
+
+    font-size: 23px;
+
+    margin-bottom: 10px;
+
+    color: #4b1717;
+}
+
+.category-card p {
+
+    color: #756b60;
+
+    line-height: 1.6;
+
+    margin-bottom: 18px;
+}
+
+.open-link {
+
+    color: #8a6410;
+
+    font-weight: 700;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   PAGE HEADER
+========================================= */
+
+.page-header {
+
+    background:
+        linear-gradient(
+            135deg,
+            #4b1717,
+            #7b2525
+        );
+
+    color: white;
+
+    padding: 45px 7%;
+}
+
+.page-header h2 {
+
+    font-size: 38px;
+
+    margin-bottom: 8px;
+}
+
+.page-header p {
+
+    opacity: 0.85;
+}
+
+.home-button {
+
+    display: inline-block;
+
+    margin-bottom: 20px;
+
+    padding: 9px 16px;
+
+    border:
+        1px solid rgba(255,255,255,0.3);
+
+    background:
+        rgba(255,255,255,0.1);
+
+    color: white;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.home-button:hover {
+
+    background:
+        rgba(255,255,255,0.2);
+}
+
+
+/* =========================================
+   UNIT GRID
+========================================= */
+
+.unit-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+.unit-card {
+
+    background: #fffdf8;
+
+    border:
+        1px solid #e7ddcc;
+
+    border-radius: 16px;
+
+    padding: 24px;
+
+    box-shadow:
+        0 7px 20px
+        rgba(73,45,20,0.06);
+
+    transition: 0.3s;
+}
+
+.unit-card:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 25px
+        rgba(73,45,20,0.11);
+}
+
+.unit-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    margin-bottom: 20px;
+}
+
+.unit-number {
+
+    width: 48px;
+
+    height: 48px;
+
+    border-radius: 12px;
+
+    background: #f4ead4;
+
+    color: #7b2525;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-weight: 800;
+}
+
+.unit-title h3 {
+
+    color: #4b1717;
+
+    font-size: 19px;
+}
+
+
+/* =========================================
+   RESOURCE BUTTONS
+========================================= */
+
+.resource-buttons {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 8px;
+}
+
+.resource-button {
+
+    text-decoration: none;
+
+    text-align: center;
+
+    padding: 11px 7px;
+
+    border-radius: 8px;
+
+    background: #7b2525;
+
+    color: white;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    transition: 0.25s;
+}
+
+.resource-button:hover {
+
+    background: #5c1b1b;
+
+    transform: translateY(-2px);
+}
+
+.resource-button.game {
+
+    background: #b8860b;
+}
+
+.resource-button.game:hover {
+
+    background: #96710a;
+}
+
+
+/* =========================================
+   MAP TOPIC GRID
+========================================= */
+
+.map-topic-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+.map-topic-card {
+
+    background: #fffdf8;
+
+    border:
+        1px solid #e7ddcc;
+
+    border-radius: 16px;
+
+    padding: 25px;
+
+    box-shadow:
+        0 7px 20px
+        rgba(73,45,20,0.06);
+
+    transition: 0.3s;
+}
+
+.map-topic-card:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 25px
+        rgba(73,45,20,0.10);
+}
+
+.map-topic-card h3 {
+
+    color: #4b1717;
+
+    font-size: 18px;
+
+    margin-bottom: 17px;
+}
+
+.map-topic-buttons {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 10px;
+}
+
+.map-topic-buttons a {
+
+    text-decoration: none;
+
+    text-align: center;
+
+    padding: 11px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    background: #7b2525;
+
+    color: white;
+
+    transition: 0.25s;
+}
+
+.map-topic-buttons a:hover {
+
+    background: #5c1b1b;
+
+    transform: translateY(-2px);
+}
+
+.map-topic-buttons a.games {
+
+    background: #b8860b;
+}
+
+.map-topic-buttons a.games:hover {
+
+    background: #96710a;
+}
+
+
+/* =========================================
+   FLOATING WHATSAPP
+========================================= */
+
+.whatsapp-float {
+
+    position: fixed;
+
+    right: 22px;
+
+    bottom: 22px;
+
+    width: 62px;
+
+    height: 62px;
+
+    background: #25D366;
+
+    color: white;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-decoration: none;
+
+    font-size: 30px;
+
+    box-shadow:
+        0 6px 20px
+        rgba(0,0,0,0.25);
+
+    z-index: 2000;
+
+    transition: 0.3s;
+}
+
+.whatsapp-float:hover {
+
+    transform: scale(1.1);
+
+    background: #1ebe5d;
+}
+
+
+/* =========================================
+   WHATSAPP LABEL
+========================================= */
+
+.whatsapp-label {
+
+    position: fixed;
+
+    right: 28px;
+
+    bottom: 91px;
+
+    background: #2d1712;
+
+    color: white;
+
+    padding: 7px 12px;
+
+    border-radius: 7px;
+
+    font-size: 12px;
+
+    z-index: 1999;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: 0.3s;
+}
+
+.whatsapp-float:hover + .whatsapp-label {
+
+    opacity: 1;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+
+    background: #2d1712;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 25px;
+
+    margin-top: 20px;
+}
+
+footer p {
+
+    font-size: 13px;
+
+    opacity: 0.8;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 900px) {
+
+    header {
+
+        padding: 15px 5%;
+
+        flex-wrap: wrap;
+
+        gap: 12px;
+    }
+
+    .category-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .unit-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .map-topic-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .logo h1 {
+
+        font-size: 18px;
+    }
+
+    .logo-icon {
+
+        width: 40px;
+
+        height: 40px;
+
+        font-size: 21px;
+    }
+
+    .header-home {
+
+        padding: 8px 13px;
+
+        font-size: 12px;
+    }
+
+    .hero {
+
+        padding:
+            55px 7%;
+    }
+
+    .hero h2 {
+
+        font-size: 42px;
+    }
+
+    .hero p {
+
+        font-size: 16px;
+    }
+
+    .resource-buttons {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .resource-button {
+
+        padding:
+            12px 5px;
+
+        font-size: 12px;
+    }
+
+    .page-header h2 {
+
+        font-size: 30px;
+    }
+
+    .whatsapp-float {
+
+        width: 57px;
+
+        height: 57px;
+
+        right: 17px;
+
+        bottom: 17px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header>
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            🏛️
+        </div>
+
+        <div>
+
+            <h1>
+                History Tutor
+            </h1>
+
+            <span>
+                Learn • Explore • Remember
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="header-home"
+        onclick="showPage('home')">
+
+        🏠 Home
+
+    </button>
+
+</header>
+
+
+
+<!-- =========================================
+     HOME PAGE
+========================================= -->
+
+<section
+    id="home"
+    class="page active">
+
+
+    <div class="hero">
+
+        <div class="hero-content">
+
+            <small>
+                📚 HISTORY LEARNING HUB
+            </small>
+
+
+            <h2>
+
+                History becomes<br>
+                interesting here.
+
+            </h2>
+
+
+            <p>
+
+                Explore lessons, play interactive games,
+                practise map marking and strengthen your
+                History knowledge — all in one place.
+
+            </p>
+
+
+            <button
+                class="hero-button"
+                onclick="showPage('grade10')">
+
+                Start Learning →
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="container">
+
+
+        <div class="section-title">
+
+            <h2>
+                உங்கள் கற்றல் பயணத்தைத் தேர்ந்தெடுக்கவும்
+            </h2>
+
+            <p>
+                உங்கள் தரத்தையோ அல்லது படம் குறித்தல் பயிற்சியையோ தேர்ந்தெடுக்கவும்.
+            </p>
+
+        </div>
+
+
+
+        <div class="category-grid">
+
+
+            <!-- தரம் 10 -->
+
+            <div
+                class="category-card"
+                onclick="showPage('grade10')">
+
+                <div class="category-icon">
+                    📖
+                </div>
+
+                <h3>
+                    தரம் 10
+                </h3>
+
+                <p>
+                    தரம் 10 வரலாறு பாடங்களுக்கான
+                    பாடப்புத்தகங்கள், குறிப்புகள்,
+                    வினாக்கள் மற்றும் விளையாட்டுகள்.
+                </p>
+
+                <span class="open-link">
+                    தரம் 10 →
+                </span>
+
+            </div>
+
+
+
+            <!-- தரம் 11 -->
+
+            <div
+                class="category-card"
+                onclick="showPage('grade11')">
+
+                <div class="category-icon">
+                    🎓
+                </div>
+
+                <h3>
+                    தரம் 11
+                </h3>
+
+                <p>
+                    தரம் 11 வரலாறு பாடங்களுக்கான
+                    கற்றல் மற்றும் பரீட்சை வளங்கள்.
+                </p>
+
+                <span class="open-link">
+                    தரம் 11 →
+                </span>
+
+            </div>
+
+
+
+            <!-- படம் குறித்தல் -->
+
+            <div
+                class="category-card"
+                onclick="showPage('maps')">
+
+                <div class="category-icon">
+                    🗺️
+                </div>
+
+                <h3>
+                    படம் குறித்தல்
+                </h3>
+
+                <p>
+                    இலங்கை மற்றும் உலகப் படங்களில்
+                    முக்கிய இடங்களை அடையாளம் காணப் பயிற்சி செய்யுங்கள்.
+                </p>
+
+                <span class="open-link">
+                    படம் குறித்தல் →
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     GRADE 10 PAGE
+========================================= -->
+
+<section
+    id="grade10"
+    class="page">
+
+
+    <div class="page-header">
+
+        <button
+            class="home-button"
+            onclick="showPage('home')">
+
+            ← Home
+
+        </button>
+
+
+        <h2>
+            தரம் 10
+        </h2>
+
+
+        <p>
+            Grade 10 History Learning Resources
+        </p>
+
+    </div>
+
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                தரம் 10 அலகுகள்
+            </h2>
+
+            <p>
+                தேவையான அலகைத் தேர்ந்தெடுத்து கற்றல் வளங்களை அணுகவும்.
+            </p>
+
+        </div>
+
+
+        <div
+            class="unit-grid"
+            id="grade10Units">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     GRADE 11 PAGE
+========================================= -->
+
+<section
+    id="grade11"
+    class="page">
+
+
+    <div class="page-header">
+
+        <button
+            class="home-button"
+            onclick="showPage('home')">
+
+            ← Home
+
+        </button>
+
+
+        <h2>
+            தரம் 11
+        </h2>
+
+
+        <p>
+            Grade 11 History Learning Resources
+        </p>
+
+    </div>
+
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                தரம் 11 அலகுகள்
+            </h2>
+
+            <p>
+                தேவையான அலகைத் தேர்ந்தெடுத்து கற்றல் வளங்களை அணுகவும்.
+            </p>
+
+        </div>
+
+
+        <div
+            class="unit-grid"
+            id="grade11Units">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     MAP MARKING PAGE
+========================================= -->
+
+<section
+    id="maps"
+    class="page">
+
+
+    <div class="page-header">
+
+        <button
+            class="home-button"
+            onclick="showPage('home')">
+
+            ← Home
+
+        </button>
+
+
+        <h2>
+            படம் குறித்தல்
+        </h2>
+
+
+        <p>
+            Map Marking Practice
+        </p>
+
+    </div>
+
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                படத்தைத் தேர்ந்தெடுக்கவும்
+            </h2>
+
+            <p>
+                இலங்கை அல்லது உலகப் படத்தைத் தேர்ந்தெடுக்கவும்.
+            </p>
+
+        </div>
+
+
+        <div class="category-grid">
+
+
+            <div
+                class="category-card"
+                onclick="showPage('srilanka')">
+
+                <div class="category-icon">
+                    🇱🇰
+                </div>
+
+                <h3>
+                    இலங்கை படம்
+                </h3>
+
+                <p>
+                    இலங்கையின் முக்கிய வரலாற்று
+                    மற்றும் புவியியல் இடங்களைப் பயிற்சி செய்யுங்கள்.
+                </p>
+
+                <span class="open-link">
+                    இலங்கை படம் →
+                </span>
+
+            </div>
+
+
+
+            <div
+                class="category-card"
+                onclick="showPage('world')">
+
+                <div class="category-icon">
+                    🌍
+                </div>
+
+                <h3>
+                    உலகப் படம்
+                </h3>
+
+                <p>
+                    உலகின் முக்கிய நாடுகள்,
+                    கடல்கள் மற்றும் நீரிணைகளைப் பயிற்சி செய்யுங்கள்.
+                </p>
+
+                <span class="open-link">
+                    உலகப் படம் →
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     SRI LANKA MAP PAGE
+========================================= -->
+
+<section
+    id="srilanka"
+    class="page">
+
+
+    <div class="page-header">
+
+        <button
+            class="home-button"
+            onclick="showPage('home')">
+
+            ← Home
+
+        </button>
+
+
+        <h2>
+            இலங்கை படம்
+        </h2>
+
+
+        <p>
+            Sri Lanka Map Marking Activities
+        </p>
+
+    </div>
+
+
+    <div class="container">
+
+
+        <div
+            class="map-topic-grid"
+            id="srilankaTopics">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     WORLD MAP PAGE
+========================================= -->
+
+<section
+    id="world"
+    class="page">
+
+
+    <div class="page-header">
+
+        <button
+            class="home-button"
+            onclick="showPage('home')">
+
+            ← Home
+
+        </button>
+
+
+        <h2>
+            உலகப் படம்
+        </h2>
+
+
+        <p>
+            World Map Marking Activities
+        </p>
+
+    </div>
+
+
+    <div class="container">
+
+
+        <div
+            class="map-topic-grid"
+            id="worldTopics">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     FLOATING WHATSAPP
+========================================= -->
+
+<a
+    href="https://wa.me/94743081818?text=Hello%20Sir%2C%20I%20need%20help%20with%20History%20Tutor."
+    target="_blank"
+    class="whatsapp-float"
+    aria-label="WhatsApp">
+
+   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+  <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+</svg>
+
+</a>
+
+
+<div class="whatsapp-label">
+    Contact Teacher
+</div>
+
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer>
+
+    <p>
+        © 2026 History Tutor
+        &nbsp; | &nbsp;
+        MI. Ashik (NDT, LLB (R))
+    </p>
+
+</footer>
+
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
+<script>
+
+
+/* =====================================================
+   ⭐⭐ YOUR LINKS START HERE ⭐⭐
+
+   THIS IS THE ONLY PART YOU NEED TO EDIT
+   WHEN ADDING YOUR LINKS.
+
+   Replace "YOUR_LINK_HERE" with your actual
+   Google Drive or PurposeGames link.
+
+===================================================== */
+
+
+/* =========================================
+   GRADE 10 LINKS
+========================================= */
+
+const grade10Links = [
+
+    /* 1. வரலாற்றைக் கற்பதற்கான மூலாதாரங்கள் */
+
+    {
+        textbook: "https://drive.google.com/file/d/1RAD4zlu8TRhnnaALIxrtFbEMIt3gZlbn/view?usp=sharing",
+        notes: "https://drive.google.com/drive/folders/1Lb-i55cmExOG-VTmFbKK2t7hHpPcnN8g?usp=sharing",
+        mcq: "YOUR_LINK_HERE",
+        paper: "YOUR_LINK_HERE",
+        games: "YOUR_LINK_HERE"
+    },
+
+    /* 2. இலங்கையின் குடியேற்றங்கள் */
+
+    {
+        textbook: "https://drive.google.com/file/d/1mFr8K1tYT0zSWkUWdqSnY78RGLxPD76U/view?usp=sharing",
+        notes: "https://drive.google.com/drive/folders/16mB-hlQGmMYxY98Qrsj0hn5OKq7Qt3hF?usp=sharing",
+        mcq: "YOUR_LINK_HERE",
+        paper: "YOUR_LINK_HERE",
+        games: "YOUR_LINK_HERE"
+    },
+
+    /* 3. இலங்கையின் அரசியல் அதிகார வளர்ச்சி */
+
+    {
+        textbook: "https://drive.google.com/file/d/19MUCU16WyzAUgOlgOYPZQcbV3qAcQlrn/view?usp=sharing",
+        notes: "YOUR_LINK_HERE",
+        mcq: "YOUR_LINK_HERE",
+        paper: "YOUR_LINK_HERE",
+        games: "YOUR_LINK_HERE"
+    },
+
+    /* 4. பண்டைய சமூகம் */
+
+    {
+        textbook: "https://drive.google.com/file/d/1jUAiH7IFKUwHPxbHAVSwZyzXr_KGmkps/view?usp=sharing",
+        notes: "YOUR_LINK_HERE",
+        mcq: "YOUR_LINK_HERE",
+        paper: "YOUR_LINK_HERE",
+        games: "YOUR_LINK_HERE"
+    },
+
+    /* 5. இலங்கையின் புராதன விஞ்ஞானமும் தொழினுட்பமும் */
+
+    {
+        textbook: "https://drive.google.com/file/d/129ZNlb_ieUieWthLBpUwtDwC2Qe1Po35/view?usp=sharing",
+        notes: "YOUR_LINK_HERE",
+        mcq: "YOUR_LINK_HERE",
+        paper: "YOUR_LINK_HERE",
+        games: "YOUR_LINK_HERE"
+    },
+
+    /* 6. வரலாற்று அறிவும் அதன் நடைமுறைப் பிரதியீடும் */
+
+    {
+        textbook: "https://drive.google.com/file/d/1AapbvpKHgxFX2a4NnjpPKCiRvnRVqZ_z/view?usp=sharing",
+        notes: "YOUR_LINK_HERE",
+        mcq: "YOUR_LINK_HERE",
+        paper: "YOUR_LINK_HERE",
+        games: "YOUR_LINK_HERE"
+    },
+
+    /* 7. உலர் வலய புராதன நகரங்களின் வீழ்ச்சியும் தென்மேற்கில் புதிய இராச்சியங்களின் தோற்றமும் */
+
+    {
+        textbook: "https://drive.google.com/file/d/1wDBwaHo1SXRTP_1wNAsWmRl_Heh6YmxB/view?usp=sharing",
+        notes: "https://drive.google.com/drive/folders/171X89Blxq1yXZLCKTtIL5zmgR2HCeJW-?usp=sharing",
+        mcq: "YOUR_LINK_HERE",
+        paper: "YOUR_LINK_HERE",
+        games: "YOUR_LINK_HERE"
+    },
+
+    /* 8. கண்டி இராச்சியம் */
+
+    {
+        textbook: "https://drive.google.com/file/d/1tUj8M-N0YrPZwqIqpfd_W5sKQb7asCX8/view?usp=sharing",
+        notes: "https://drive.google.com/drive/folders/1ACV3WgsvMwqEz3e7QeKKmtwVOxC71hYQ?usp=sharing",
+        mcq: "YOUR_LINK_HERE",
+        paper: "YOUR_LINK_HERE",
+        games: "YOUR_LINK_HERE"
+    },
+
+    /* 9. மறுமலர்ச்சி */
+
+    {
+        textbook: "https://drive.google.com/file/d/17oek2ftDjPZE9H2guFFGk78WYDhpff6o/view?usp=sharing",
+        notes: "https://drive.google.com/drive/folders/1kyShl4ehOl8XnO9lS7Qm0mwnuWCF763o?usp=sharing",
+        mcq: "YOUR_LINK_HERE",
+        paper: "YOUR_LINK_HERE",
+        games: "YOUR_LINK_HERE"
+    },
+
+    /* 10. இலங்கையும் மேற்குலகமும் */
+
+    {
+        textbook: "https://drive.google.com/file/d/1XnmUauo1VcEyLo9EyRNjjVKgsoRB2917/view?usp=sharing",
+        notes: "YOUR_LINK_HERE",
+        mcq: "YOUR_LINK_HERE",
+        paper: "YOUR_LINK_HERE",
+        games: "YOUR_LINK_HERE"
+    }
+
+];
+
+
+
+/* =========================================
+   GRADE 11 LINKS
+========================================= */
+
+const grade11Links = [
+
+    /* UNIT 1 */
+
+    {
+        textbook: "YOUR_LINK_HERE",
+        notes: "YOUR_LINK_HERE",
+        mcq: "YOUR_LINK_HERE",
+        paper: "YOUR_LINK_HERE",
+        games: "YOUR_LINK_HERE"
+    },
+
+    /* UNIT 2 */
+
+    {
+        textbook: "YOUR_LINK_HERE",
+        notes: "YOUR_LINK_HERE",
+        mcq: "YOUR_LINK_HERE",
+        paper: "YOUR_LINK_HERE",
+        games: "YOUR_LINK_HERE"
+    },
+
+    /* UNIT 3 */
+
+    {
+        textbook: "YOUR_LINK_HERE",
+        notes: "YOUR_LINK_HERE",
+        mcq: "YOUR_LINK_HERE",
+        paper: "YOUR_LINK_HERE",
+        games: "YOUR_LINK_HERE"
+    },
+
+    /* UNIT 4 */
+
+    {
+        textbook: "YOUR_LINK_HERE",
+        notes: "YOUR_LINK_HERE",
+        mcq: "YOUR_LINK_HERE",
+        paper: "YOUR_LINK_HERE",
+        games: "YOUR_LINK_HERE"
+    },
+
+    /* UNIT 5 */
+
+    {
+        textbook: "YOUR_LINK_HERE",
+        notes: "YOUR_LINK_HERE",
+        mcq: "YOUR_LINK_HERE",
+        paper: "YOUR_LINK_HERE",
+        games: "YOUR_LINK_HERE"
+    },
+
+    /* UNIT 6 */
+
+    {
+        textbook: "YOUR_LINK_HERE",
+        notes: "YOUR_LINK_HERE",
+        mcq: "YOUR_LINK_HERE",
+        paper: "YOUR_LINK_HERE",
+        games: "YOUR_LINK_HERE"
+    },
+
+    /* UNIT 7 */
+
+    {
+        textbook: "YOUR_LINK_HERE",
+        notes: "YOUR_LINK_HERE",
+        mcq: "YOUR_LINK_HERE",
+        paper: "YOUR_LINK_HERE",
+        games: "YOUR_LINK_HERE"
+    },
+
+    /* UNIT 8 */
+
+    {
+        textbook: "YOUR_LINK_HERE",
+        notes: "YOUR_LINK_HERE",
+        mcq: "YOUR_LINK_HERE",
+        paper: "YOUR_LINK_HERE",
+        games: "YOUR_LINK_HERE"
+    }
+
+];
+
+
+
+/* =========================================
+   SRI LANKA MAP LINKS
+========================================= */
+
+const srilankaLinks = [
+
+ {
+        name: "நதிகள்",
+        lesson: "YOUR_LINK_HERE",
+        games: "https://www.purposegames.com/game/sri-lankan-rivers"
+    },
+    
+{
+        name: "தலைநகரங்கள், இராசதனிகள்",
+        lesson: "YOUR_LINK_HERE",
+        games: "https://www.purposegames.com/game/5kxTgruvrh9"
+    },
+
+    {
+        name: "துறைமுகங்கள்",
+        lesson: "YOUR_LINK_HERE",
+        games: " https://www.purposegames.com/game/cveWUx1mlVn"
+    },
+
+    {
+        name: "வரலாற்றுக்கு முற்பட்டகால இடங்கள்",
+        lesson: "YOUR_LINK_HERE",
+        games: "YOUR_LINK_HERE"
+    },
+
+    {
+        name: "முன் வரலாற்றுக் கால இடங்கள்",
+        lesson: "YOUR_LINK_HERE",
+        games: "YOUR_LINK_HERE"
+    },
+
+    {
+        name: "வரலாற்றுப் போர் இடங்கள்",
+        lesson: "YOUR_LINK_HERE",
+        games: "YOUR_LINK_HERE"
+    },
+
+    {
+        name: "வாவிகள், அணைக்கட்டுகள் - 1",
+        lesson: "YOUR_LINK_HERE",
+        games: "https://www.purposegames.com/game/o2YUSMMGWh3"
+    },
+
+    {
+        name: "வாவிகள், அணைக்கட்டுகள் - 2",
+        lesson: "YOUR_LINK_HERE",
+        games: "https://www.purposegames.com/game/yXpOIMDH0iB"
+    },
+
+    {
+        name: "ஆராய்ச்சி நிலையங்கள்",
+        lesson: "YOUR_LINK_HERE",
+        games: "YOUR_LINK_HERE"
+    },
+
+    {
+        name: "கல்வெட்டுக்கள்",
+        lesson: "YOUR_LINK_HERE",
+        games: "YOUR_LINK_HERE"
+    },
+
+    {
+        name: "ஒல்லாந்தர் ஆட்சிப் பிரதேசங்கள்",
+        lesson: "YOUR_LINK_HERE",
+        games: "YOUR_LINK_HERE"
+    }
+
+];
+
+
+
+/* =========================================
+   WORLD MAP LINKS
+========================================= */
+
+const worldLinks = [
+
+    {
+        name: "தெற்காசிய நாடுகள்",
+        lesson: "YOUR_LINK_HERE",
+        games: "https://www.purposegames.com/game/8upvQnPkko2"
+    },
+
+    {
+        name: "கிழக்காசிய நாடுகள்",
+        lesson: "YOUR_LINK_HERE",
+        games: "https://www.purposegames.com/game/J9tdn9taolF"
+    },
+ {
+        name: "தென் கிழக்காசிய நாடுகள்",
+        lesson: "YOUR_LINK_HERE",
+        games: " https://www.purposegames.com/game/O6LoKlJPH7A"
+    },
+
+    {
+        name: "ஐரோப்பிய நாடுகள்",
+        lesson: "YOUR_LINK_HERE",
+        games: "https://www.purposegames.com/game/yPOZY6obQxB"
+    },
+
+    {
+        name: "இந்தியா",
+        lesson: "YOUR_LINK_HERE",
+        games: "https://www.purposegames.com/game/b6JWaqVfms5"
+    },
+
+    {
+        name: "தீவுகள்",
+        lesson: "YOUR_LINK_HERE",
+        games: "YOUR_LINK_HERE"
+    },
+
+    {
+        name: "கடல்கள்",
+        lesson: "YOUR_LINK_HERE",
+        games: "https://www.purposegames.com/game/UTt754rNHMX"
+    },
+
+    {
+        name: "நீரிணைகள்",
+        lesson: "YOUR_LINK_HERE",
+        games: "YOUR_LINK_HERE"
+    }
+
+];
+
+
+
+/* =====================================================
+   PAGE NAVIGATION
+===================================================== */
+
+function showPage(pageId) {
+
+    const pages =
+        document.querySelectorAll(".page");
+
+
+    pages.forEach(function(page) {
+
+        page.classList.remove("active");
+
+    });
+
+
+    const selectedPage =
+        document.getElementById(pageId);
+
+
+    if (selectedPage) {
+
+        selectedPage.classList.add("active");
+
+    }
+
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+
+
+/* =====================================================
+   CREATE GRADE RESOURCE BUTTONS
+===================================================== */
+
+function createResourceButtons(data) {
+
+    return `
+
+        <a
+            href="${data.textbook}"
+            target="_blank"
+            class="resource-button">
+
+            📖 Text Book
+
+        </a>
+
+
+        <a
+            href="${data.notes}"
+            target="_blank"
+            class="resource-button">
+
+            📝 Short Notes
+
+        </a>
+
+
+        <a
+            href="${data.mcq}"
+            target="_blank"
+            class="resource-button">
+
+            ❓ MCQ
+
+        </a>
+
+
+        <a
+            href="${data.paper}"
+            target="_blank"
+            class="resource-button">
+
+            📄 Paste Paper
+
+        </a>
+
+
+        <a
+            href="${data.games}"
+            target="_blank"
+            class="resource-button game">
+
+            🎮 Games
+
+        </a>
+
+    `;
+
+}
+
+
+
+/* =====================================================
+   CREATE GRADE 10 UNITS
+===================================================== */
+
+const grade10Container =
+    document.getElementById("grade10Units");
+
+
+grade10Links.forEach(function(data, index) {
+
+    const unitNumber = index + 1;
+
+
+    grade10Container.innerHTML += `
+
+        <div class="unit-card">
+
+            <div class="unit-title">
+
+                <div class="unit-number">
+                    ${unitNumber}
+                </div>
+
+                <h3>
+                    Unit ${unitNumber}
+                </h3>
+
+            </div>
+
+
+            <div class="resource-buttons">
+
+                ${createResourceButtons(data)}
+
+            </div>
+
+        </div>
+
+    `;
+
+});
+
+
+
+/* =====================================================
+   CREATE GRADE 11 UNITS
+===================================================== */
+
+const grade11Container =
+    document.getElementById("grade11Units");
+
+
+grade11Links.forEach(function(data, index) {
+
+    const unitNumber = index + 1;
+
+
+    grade11Container.innerHTML += `
+
+        <div class="unit-card">
+
+            <div class="unit-title">
+
+                <div class="unit-number">
+                    ${unitNumber}
+                </div>
+
+                <h3>
+                    Unit ${unitNumber}
+                </h3>
+
+            </div>
+
+
+            <div class="resource-buttons">
+
+                ${createResourceButtons(data)}
+
+            </div>
+
+        </div>
+
+    `;
+
+});
+
+
+
+/* =====================================================
+   CREATE SRI LANKA MAP TOPICS
+===================================================== */
+
+const srilankaContainer =
+    document.getElementById("srilankaTopics");
+
+
+srilankaLinks.forEach(function(topic) {
+
+    srilankaContainer.innerHTML += `
+
+        <div class="map-topic-card">
+
+            <h3>
+                ${topic.name}
+            </h3>
+
+
+            <div class="map-topic-buttons">
+
+                <a
+                    href="${topic.lesson}"
+                    target="_blank">
+
+                    📖 Lesson
+
+                </a>
+
+
+                <a
+                    href="${topic.games}"
+                    target="_blank"
+                    class="games">
+
+                    🎮 Games
+
+                </a>
+
+            </div>
+
+        </div>
+
+    `;
+
+});
+
+
+
+/* =====================================================
+   CREATE WORLD MAP TOPICS
+===================================================== */
+
+const worldContainer =
+    document.getElementById("worldTopics");
+
+
+worldLinks.forEach(function(topic) {
+
+    worldContainer.innerHTML += `
+
+        <div class="map-topic-card">
+
+            <h3>
+                ${topic.name}
+            </h3>
+
+
+            <div class="map-topic-buttons">
+
+                <a
+                    href="${topic.lesson}"
+                    target="_blank">
+
+                    📖 Lesson
+
+                </a>
+
+
+                <a
+                    href="${topic.games}"
+                    target="_blank"
+                    class="games">
+
+                    🎮 Games
+
+                </a>
+
+            </div>
+
+        </div>
+
+    `;
+
+});
+
+
+</script>
+
+
+</body>
+
+</html>
