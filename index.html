@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>History Tutor</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🌍%3C/text%3E%3C/svg%3E">
 
 <style>
 
@@ -660,56 +661,6 @@ header {
 
 
 /* =========================================
-   UNIT 8 - NAMED GAMES
-========================================= */
-
-.unit8-games-list {
-    grid-column: 1 / -1;
-    margin-top: 10px;
-    padding: 12px;
-    background: #f7f0df;
-    border: 1px solid #e7ddcc;
-    border-radius: 12px;
-    display: grid;
-    gap: 9px;
-}
-
-.unit8-game-button {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    text-decoration: none;
-    background: #fffdf8;
-    color: #4b1717;
-    border: 1px solid #dfd1b9;
-    border-radius: 9px;
-    padding: 12px 14px;
-    font-size: 13px;
-    font-weight: 650;
-    transition: 0.25s;
-}
-
-.unit8-game-button:hover {
-    background: #f4ead4;
-    transform: translateX(3px);
-    border-color: #b8860b;
-}
-
-.game-arrow {
-    color: #b8860b;
-    font-size: 18px;
-    font-weight: 800;
-    flex-shrink: 0;
-}
-
-@media (max-width: 600px) {
-    .unit8-games-list { padding: 10px; }
-    .unit8-game-button { font-size: 12px; padding: 11px; }
-}
-
-
-/* =========================================
    FLOATING WHATSAPP
 ========================================= */
 
@@ -819,6 +770,91 @@ footer p {
     opacity: 0.8;
 }
 
+
+
+/* =========================================
+   GAME LISTS & SHORT NOTES MENU
+========================================= */
+.resource-button.toggle-button {
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+.unit8-games-list,
+.game-list {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-top: 2px;
+    padding: 10px;
+    background: #f4ead4;
+    border-radius: 10px;
+}
+.game-list-button {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px 8px;
+    border-radius: 8px;
+    background: #7b2525;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    transition: 0.25s;
+}
+.game-list-button:hover {
+    background: #5c1b1b;
+    transform: translateY(-2px);
+}
+.notes-list {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 2px;
+    padding: 10px;
+    background: #f4ead4;
+    border-radius: 10px;
+}
+.notes-list a {
+    text-decoration: none;
+    text-align: center;
+    padding: 10px 8px;
+    border-radius: 8px;
+    background: #8a6410;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+}
+.notes-list a:hover {
+    background: #6f500b;
+}
+
+/* =========================================
+   SOCIAL MEDIA FOOTER
+========================================= */
+.social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+.social-links a {
+    text-decoration: none;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    transition: 0.25s;
+}
+.social-links a:hover {
+    background: rgba(255,255,255,0.12);
+    transform: translateY(-2px);
+}
 
 /* =========================================
    MOBILE
@@ -1480,8 +1516,15 @@ footer p {
     <p>
         © 2026 History Tutor
         &nbsp; | &nbsp;
-        MI. Ashik (NDT, LLB (R))
+        Created by: MI. Ashik (NDT, LLB (R) )
     </p>
+
+    <!-- Replace the three YOUR_SOCIAL_LINK_HERE values with your real profile links -->
+    <div class="social-links">
+        <a href="YOUR_FACEBOOK_LINK_HERE" target="_blank" rel="noopener noreferrer">📘 Facebook</a>
+        <a href="YOUR_INSTAGRAM_LINK_HERE" target="_blank" rel="noopener noreferrer">📸 Instagram</a>
+        <a href="YOUR_LINKEDIN_LINK_HERE" target="_blank" rel="noopener noreferrer">💼 LinkedIn</a>
+    </div>
 
 </footer>
 
@@ -1516,110 +1559,161 @@ const grade10Links = [
 
     {
         textbook: "https://drive.google.com/file/d/1RAD4zlu8TRhnnaALIxrtFbEMIt3gZlbn/view?usp=sharing",
-        notes: "https://drive.google.com/drive/folders/1Lb-i55cmExOG-VTmFbKK2t7hHpPcnN8g?usp=sharing",
+        notes: { readOnline: "https://drive.google.com/drive/folders/1Lb-i55cmExOG-VTmFbKK2t7hHpPcnN8g?usp=sharing", pdf: "YOUR_LINK_HERE" },
         mcq: "YOUR_LINK_HERE",
         paper: "YOUR_LINK_HERE",
-        games: "YOUR_LINK_HERE"
+        games: [
+            { name: "Game 01", link: "YOUR_LINK_HERE" },
+            { name: "Game 02", link: "YOUR_LINK_HERE" },
+            { name: "Game 03", link: "YOUR_LINK_HERE" },
+            { name: "Game 04", link: "YOUR_LINK_HERE" },
+            { name: "Game 05", link: "YOUR_LINK_HERE" }
+        ]
     },
 
     /* 2. இலங்கையின் குடியேற்றங்கள் */
 
     {
         textbook: "https://drive.google.com/file/d/1mFr8K1tYT0zSWkUWdqSnY78RGLxPD76U/view?usp=sharing",
-        notes: "https://drive.google.com/drive/folders/16mB-hlQGmMYxY98Qrsj0hn5OKq7Qt3hF?usp=sharing",
+        notes: { readOnline: "https://drive.google.com/drive/folders/16mB-hlQGmMYxY98Qrsj0hn5OKq7Qt3hF?usp=sharing", pdf: "YOUR_LINK_HERE" },
         mcq: "YOUR_LINK_HERE",
         paper: "YOUR_LINK_HERE",
-        games: "YOUR_LINK_HERE"
+        games: [
+            { name: "Game 01", link: "YOUR_LINK_HERE" },
+            { name: "Game 02", link: "YOUR_LINK_HERE" },
+            { name: "Game 03", link: "YOUR_LINK_HERE" },
+            { name: "Game 04", link: "YOUR_LINK_HERE" },
+            { name: "Game 05", link: "YOUR_LINK_HERE" }
+        ]
     },
 
     /* 3. இலங்கையின் அரசியல் அதிகார வளர்ச்சி */
 
     {
         textbook: "https://drive.google.com/file/d/19MUCU16WyzAUgOlgOYPZQcbV3qAcQlrn/view?usp=sharing",
-        notes: "YOUR_LINK_HERE",
+        notes: { readOnline: "YOUR_LINK_HERE", pdf: "YOUR_LINK_HERE" },
         mcq: "YOUR_LINK_HERE",
         paper: "YOUR_LINK_HERE",
-        games: "YOUR_LINK_HERE"
+        games: [
+            { name: "Game 01", link: "YOUR_LINK_HERE" },
+            { name: "Game 02", link: "YOUR_LINK_HERE" },
+            { name: "Game 03", link: "YOUR_LINK_HERE" },
+            { name: "Game 04", link: "YOUR_LINK_HERE" },
+            { name: "Game 05", link: "YOUR_LINK_HERE" }
+        ]
     },
 
     /* 4. பண்டைய சமூகம் */
 
     {
         textbook: "https://drive.google.com/file/d/1jUAiH7IFKUwHPxbHAVSwZyzXr_KGmkps/view?usp=sharing",
-        notes: "YOUR_LINK_HERE",
+        notes: { readOnline: "YOUR_LINK_HERE", pdf: "YOUR_LINK_HERE" },
         mcq: "YOUR_LINK_HERE",
         paper: "YOUR_LINK_HERE",
-        games: "YOUR_LINK_HERE"
+        games: [
+            { name: "Game 01", link: "YOUR_LINK_HERE" },
+            { name: "Game 02", link: "YOUR_LINK_HERE" },
+            { name: "Game 03", link: "YOUR_LINK_HERE" },
+            { name: "Game 04", link: "YOUR_LINK_HERE" },
+            { name: "Game 05", link: "YOUR_LINK_HERE" }
+        ]
     },
 
     /* 5. இலங்கையின் புராதன விஞ்ஞானமும் தொழினுட்பமும் */
 
     {
         textbook: "https://drive.google.com/file/d/129ZNlb_ieUieWthLBpUwtDwC2Qe1Po35/view?usp=sharing",
-        notes: "YOUR_LINK_HERE",
+        notes: { readOnline: "YOUR_LINK_HERE", pdf: "YOUR_LINK_HERE" },
         mcq: "YOUR_LINK_HERE",
         paper: "YOUR_LINK_HERE",
-        games: "YOUR_LINK_HERE"
+        games: [
+            { name: "Game 01", link: "YOUR_LINK_HERE" },
+            { name: "Game 02", link: "YOUR_LINK_HERE" },
+            { name: "Game 03", link: "YOUR_LINK_HERE" },
+            { name: "Game 04", link: "YOUR_LINK_HERE" },
+            { name: "Game 05", link: "YOUR_LINK_HERE" }
+        ]
     },
 
     /* 6. வரலாற்று அறிவும் அதன் நடைமுறைப் பிரதியீடும் */
 
     {
         textbook: "https://drive.google.com/file/d/1AapbvpKHgxFX2a4NnjpPKCiRvnRVqZ_z/view?usp=sharing",
-        notes: "YOUR_LINK_HERE",
+        notes: { readOnline: "YOUR_LINK_HERE", pdf: "YOUR_LINK_HERE" },
         mcq: "YOUR_LINK_HERE",
         paper: "YOUR_LINK_HERE",
-        games: "YOUR_LINK_HERE"
+        games: [
+            { name: "Game 01", link: "YOUR_LINK_HERE" },
+            { name: "Game 02", link: "YOUR_LINK_HERE" },
+            { name: "Game 03", link: "YOUR_LINK_HERE" },
+            { name: "Game 04", link: "YOUR_LINK_HERE" },
+            { name: "Game 05", link: "YOUR_LINK_HERE" }
+        ]
     },
 
     /* 7. உலர் வலய புராதன நகரங்களின் வீழ்ச்சியும் தென்மேற்கில் புதிய இராச்சியங்களின் தோற்றமும் */
 
     {
         textbook: "https://drive.google.com/file/d/1wDBwaHo1SXRTP_1wNAsWmRl_Heh6YmxB/view?usp=sharing",
-        notes: "https://drive.google.com/drive/folders/171X89Blxq1yXZLCKTtIL5zmgR2HCeJW-?usp=sharing",
+        notes: { readOnline: "https://drive.google.com/drive/folders/171X89Blxq1yXZLCKTtIL5zmgR2HCeJW-?usp=sharing", pdf: "YOUR_LINK_HERE" },
         mcq: "YOUR_LINK_HERE",
         paper: "YOUR_LINK_HERE",
-        games: "YOUR_LINK_HERE"
+        games: [
+            { name: "Game 01", link: "YOUR_LINK_HERE" },
+            { name: "Game 02", link: "YOUR_LINK_HERE" },
+            { name: "Game 03", link: "YOUR_LINK_HERE" },
+            { name: "Game 04", link: "YOUR_LINK_HERE" },
+            { name: "Game 05", link: "YOUR_LINK_HERE" }
+        ]
     },
 
     /* 8. கண்டி இராச்சியம் */
 
     {
         textbook: "https://drive.google.com/file/d/1tUj8M-N0YrPZwqIqpfd_W5sKQb7asCX8/view?usp=sharing",
-        notes: "https://drive.google.com/drive/folders/1ACV3WgsvMwqEz3e7QeKKmtwVOxC71hYQ?usp=sharing",
+        notes: { readOnline: "https://drive.google.com/drive/folders/1ACV3WgsvMwqEz3e7QeKKmtwVOxC71hYQ?usp=sharing", pdf: "YOUR_LINK_HERE" },
         mcq: "YOUR_LINK_HERE",
         paper: "YOUR_LINK_HERE",
-
-        /* UNIT 8 - NAMED GAMES */
         games: [
             { name: "கண்டி இராச்சிய மன்னர்கள்", link: "https://learningapps.org/display?v=piz8fdf3k26" },
             { name: "1ம் விமலதர்மசூரியன்", link: "https://learningapps.org/display?v=pqrv42tgj26" },
             { name: "செனரத், 2ம் இராஜசிங்கன்", link: "https://learningapps.org/display?v=pib3gjuij26" },
             { name: "கண்டி இராச்சியத்தில் பயன்படுத்தப்பட்ட நிலங்கள்", link: "https://learningapps.org/display?v=phmbgcfbj26" },
             { name: "அரசுமாளிகை அதிகாரிகளும் அவர்களுக்குரிய பொறுப்புகளும்", link: "https://learningapps.org/display?v=p9hp4c2wc26" },
-           { name: "கண்டி இராச்சியத்தில் அறவிடப்பட்ட வரி வகைகள்", link: "https://learningapps.org/display?v=puia98gej26" }
+            { name: "கண்டி இராச்சியத்தில் அறவிடப்பட்ட வரி வகைகள்", link: "https://learningapps.org/display?v=puia98gej26" }
         ]
     },
-
 
     /* 9. மறுமலர்ச்சி */
 
     {
         textbook: "https://drive.google.com/file/d/17oek2ftDjPZE9H2guFFGk78WYDhpff6o/view?usp=sharing",
-        notes: "https://drive.google.com/drive/folders/1kyShl4ehOl8XnO9lS7Qm0mwnuWCF763o?usp=sharing",
+        notes: { readOnline: "https://drive.google.com/drive/folders/1kyShl4ehOl8XnO9lS7Qm0mwnuWCF763o?usp=sharing", pdf: "YOUR_LINK_HERE" },
         mcq: "YOUR_LINK_HERE",
         paper: "YOUR_LINK_HERE",
-        games: "YOUR_LINK_HERE"
+        games: [
+            { name: "Game 01", link: "YOUR_LINK_HERE" },
+            { name: "Game 02", link: "YOUR_LINK_HERE" },
+            { name: "Game 03", link: "YOUR_LINK_HERE" },
+            { name: "Game 04", link: "YOUR_LINK_HERE" },
+            { name: "Game 05", link: "YOUR_LINK_HERE" }
+        ]
     },
 
     /* 10. இலங்கையும் மேற்குலகமும் */
 
     {
         textbook: "https://drive.google.com/file/d/1XnmUauo1VcEyLo9EyRNjjVKgsoRB2917/view?usp=sharing",
-        notes: "YOUR_LINK_HERE",
+        notes: { readOnline: "YOUR_LINK_HERE", pdf: "YOUR_LINK_HERE" },
         mcq: "YOUR_LINK_HERE",
         paper: "YOUR_LINK_HERE",
-        games: "YOUR_LINK_HERE"
+        games: [
+            { name: "Game 01", link: "YOUR_LINK_HERE" },
+            { name: "Game 02", link: "YOUR_LINK_HERE" },
+            { name: "Game 03", link: "YOUR_LINK_HERE" },
+            { name: "Game 04", link: "YOUR_LINK_HERE" },
+            { name: "Game 05", link: "YOUR_LINK_HERE" }
+        ]
     }
 
 ];
@@ -1636,84 +1730,131 @@ const grade11Links = [
 
     {
         textbook: "YOUR_LINK_HERE",
-        notes: "YOUR_LINK_HERE",
+        notes: { readOnline: "YOUR_LINK_HERE", pdf: "YOUR_LINK_HERE" },
         mcq: "YOUR_LINK_HERE",
         paper: "YOUR_LINK_HERE",
-        games: "YOUR_LINK_HERE"
+        games: [
+            { name: "Game 01", link: "YOUR_LINK_HERE" },
+            { name: "Game 02", link: "YOUR_LINK_HERE" },
+            { name: "Game 03", link: "YOUR_LINK_HERE" },
+            { name: "Game 04", link: "YOUR_LINK_HERE" },
+            { name: "Game 05", link: "YOUR_LINK_HERE" }
+        ]
     },
 
     /* UNIT 2 */
 
     {
         textbook: "YOUR_LINK_HERE",
-        notes: "YOUR_LINK_HERE",
+        notes: { readOnline: "YOUR_LINK_HERE", pdf: "YOUR_LINK_HERE" },
         mcq: "YOUR_LINK_HERE",
         paper: "YOUR_LINK_HERE",
-        games: "YOUR_LINK_HERE"
+        games: [
+            { name: "Game 01", link: "YOUR_LINK_HERE" },
+            { name: "Game 02", link: "YOUR_LINK_HERE" },
+            { name: "Game 03", link: "YOUR_LINK_HERE" },
+            { name: "Game 04", link: "YOUR_LINK_HERE" },
+            { name: "Game 05", link: "YOUR_LINK_HERE" }
+        ]
     },
 
     /* UNIT 3 */
 
     {
         textbook: "YOUR_LINK_HERE",
-        notes: "YOUR_LINK_HERE",
+        notes: { readOnline: "YOUR_LINK_HERE", pdf: "YOUR_LINK_HERE" },
         mcq: "YOUR_LINK_HERE",
         paper: "YOUR_LINK_HERE",
-        games: "YOUR_LINK_HERE"
+        games: [
+            { name: "Game 01", link: "YOUR_LINK_HERE" },
+            { name: "Game 02", link: "YOUR_LINK_HERE" },
+            { name: "Game 03", link: "YOUR_LINK_HERE" },
+            { name: "Game 04", link: "YOUR_LINK_HERE" },
+            { name: "Game 05", link: "YOUR_LINK_HERE" }
+        ]
     },
 
     /* UNIT 4 */
 
     {
         textbook: "YOUR_LINK_HERE",
-        notes: "YOUR_LINK_HERE",
+        notes: { readOnline: "YOUR_LINK_HERE", pdf: "YOUR_LINK_HERE" },
         mcq: "YOUR_LINK_HERE",
         paper: "YOUR_LINK_HERE",
-        games: "YOUR_LINK_HERE"
+        games: [
+            { name: "Game 01", link: "YOUR_LINK_HERE" },
+            { name: "Game 02", link: "YOUR_LINK_HERE" },
+            { name: "Game 03", link: "YOUR_LINK_HERE" },
+            { name: "Game 04", link: "YOUR_LINK_HERE" },
+            { name: "Game 05", link: "YOUR_LINK_HERE" }
+        ]
     },
 
     /* UNIT 5 */
 
     {
         textbook: "YOUR_LINK_HERE",
-        notes: "YOUR_LINK_HERE",
+        notes: { readOnline: "YOUR_LINK_HERE", pdf: "YOUR_LINK_HERE" },
         mcq: "YOUR_LINK_HERE",
         paper: "YOUR_LINK_HERE",
-        games: "YOUR_LINK_HERE"
+        games: [
+            { name: "Game 01", link: "YOUR_LINK_HERE" },
+            { name: "Game 02", link: "YOUR_LINK_HERE" },
+            { name: "Game 03", link: "YOUR_LINK_HERE" },
+            { name: "Game 04", link: "YOUR_LINK_HERE" },
+            { name: "Game 05", link: "YOUR_LINK_HERE" }
+        ]
     },
 
     /* UNIT 6 */
 
     {
         textbook: "YOUR_LINK_HERE",
-        notes: "YOUR_LINK_HERE",
+        notes: { readOnline: "YOUR_LINK_HERE", pdf: "YOUR_LINK_HERE" },
         mcq: "YOUR_LINK_HERE",
         paper: "YOUR_LINK_HERE",
-        games: "YOUR_LINK_HERE"
+        games: [
+            { name: "Game 01", link: "YOUR_LINK_HERE" },
+            { name: "Game 02", link: "YOUR_LINK_HERE" },
+            { name: "Game 03", link: "YOUR_LINK_HERE" },
+            { name: "Game 04", link: "YOUR_LINK_HERE" },
+            { name: "Game 05", link: "YOUR_LINK_HERE" }
+        ]
     },
 
     /* UNIT 7 */
 
     {
         textbook: "YOUR_LINK_HERE",
-        notes: "YOUR_LINK_HERE",
+        notes: { readOnline: "YOUR_LINK_HERE", pdf: "YOUR_LINK_HERE" },
         mcq: "YOUR_LINK_HERE",
         paper: "YOUR_LINK_HERE",
-        games: "YOUR_LINK_HERE"
+        games: [
+            { name: "Game 01", link: "YOUR_LINK_HERE" },
+            { name: "Game 02", link: "YOUR_LINK_HERE" },
+            { name: "Game 03", link: "YOUR_LINK_HERE" },
+            { name: "Game 04", link: "YOUR_LINK_HERE" },
+            { name: "Game 05", link: "YOUR_LINK_HERE" }
+        ]
     },
 
     /* UNIT 8 */
 
     {
         textbook: "YOUR_LINK_HERE",
-        notes: "YOUR_LINK_HERE",
+        notes: { readOnline: "YOUR_LINK_HERE", pdf: "YOUR_LINK_HERE" },
         mcq: "YOUR_LINK_HERE",
         paper: "YOUR_LINK_HERE",
-        games: "YOUR_LINK_HERE"
+        games: [
+            { name: "Game 01", link: "YOUR_LINK_HERE" },
+            { name: "Game 02", link: "YOUR_LINK_HERE" },
+            { name: "Game 03", link: "YOUR_LINK_HERE" },
+            { name: "Game 04", link: "YOUR_LINK_HERE" },
+            { name: "Game 05", link: "YOUR_LINK_HERE" }
+        ]
     }
 
 ];
-
 
 
 /* =========================================
@@ -1889,83 +2030,71 @@ function showPage(pageId) {
 
 
 
-function toggleUnit8Games() {
-    const gamesList = document.getElementById("unit8Games");
-    if (!gamesList) return;
-    gamesList.style.display = gamesList.style.display === "none" ? "grid" : "none";
-}
-
-
 /* =====================================================
    CREATE GRADE RESOURCE BUTTONS
 ===================================================== */
 
-function createResourceButtons(data, index) {
+function createResourceButtons(data, unitIndex, grade) {
+
+    const gameId = `${grade}Games${unitIndex}`;
+    const notesId = `${grade}Notes${unitIndex}`;
+
+    const notes = data.notes && typeof data.notes === "object"
+        ? data.notes
+        : { readOnline: data.notes || "YOUR_LINK_HERE", pdf: "YOUR_LINK_HERE" };
+
+    let games = data.games;
+    if (!Array.isArray(games)) {
+        games = [
+            { name: "Game 01", link: games || "YOUR_LINK_HERE" },
+            { name: "Game 02", link: "YOUR_LINK_HERE" },
+            { name: "Game 03", link: "YOUR_LINK_HERE" },
+            { name: "Game 04", link: "YOUR_LINK_HERE" },
+            { name: "Game 05", link: "YOUR_LINK_HERE" }
+        ];
+    }
+
+    const gameButtons = games.map(function(game) {
+        return `<a href="${game.link}" target="_blank" rel="noopener noreferrer" class="game-list-button">🎮 ${game.name}</a>`;
+    }).join("");
 
     return `
-
-        <a
-            href="${data.textbook}"
-            target="_blank"
-            class="resource-button">
-
+        <a href="${data.textbook}" target="_blank" rel="noopener noreferrer" class="resource-button">
             📖 Text Book
-
         </a>
 
-
-        <a
-            href="${data.notes}"
-            target="_blank"
-            class="resource-button">
-
+        <button type="button" onclick="toggleResourceList('${notesId}')" class="resource-button toggle-button">
             📝 Short Notes
+        </button>
 
-        </a>
-
-
-        <a
-            href="${data.mcq}"
-            target="_blank"
-            class="resource-button">
-
+        <a href="${data.mcq}" target="_blank" rel="noopener noreferrer" class="resource-button">
             ❓ MCQ
-
         </a>
 
-
-        <a
-            href="${data.paper}"
-            target="_blank"
-            class="resource-button">
-
+        <a href="${data.paper}" target="_blank" rel="noopener noreferrer" class="resource-button">
             📄 Paste Paper
-
         </a>
 
+        <button type="button" onclick="toggleResourceList('${gameId}')" class="resource-button game toggle-button">
+            🎮 Games (${games.length})
+        </button>
 
-        ${index === 7 && Array.isArray(data.games) ? `
-            <button type="button" class="resource-button game" onclick="toggleUnit8Games()">
-                🎮 Games (${data.games.length})
-            </button>
-            <div id="unit8Games" class="unit8-games-list" style="display:none;">
-                ${data.games.map(function(game) {
-                    return `<a href="${game.link}" target="_blank" class="unit8-game-button">
-                        <span>🎮 ${game.name}</span><span class="game-arrow">→</span>
-                    </a>`;
-                }).join("")}
-            </div>
-        ` : `
-            <a href="${data.games}" target="_blank" class="resource-button game">
-                🎮 Games
-            </a>
-        `}
+        <div id="${notesId}" class="notes-list" style="display:none;">
+            <a href="${notes.readOnline}" target="_blank" rel="noopener noreferrer">📖 Read Online</a>
+            <a href="${notes.pdf}" target="_blank" rel="noopener noreferrer">📥 Download PDF</a>
+        </div>
 
+        <div id="${gameId}" class="game-list" style="display:none;">
+            ${gameButtons}
+        </div>
     `;
-
 }
 
-
+function toggleResourceList(id) {
+    const element = document.getElementById(id);
+    if (!element) return;
+    element.style.display = element.style.display === "none" ? "grid" : "none";
+}
 
 /* =====================================================
    CREATE GRADE 10 UNITS
@@ -1999,7 +2128,7 @@ grade10Links.forEach(function(data, index) {
 
             <div class="resource-buttons">
 
-                ${createResourceButtons(data, index)}
+                ${createResourceButtons(data, index, "grade10")} 
 
             </div>
 
@@ -2043,7 +2172,7 @@ grade11Links.forEach(function(data, index) {
 
             <div class="resource-buttons">
 
-                ${createResourceButtons(data)}
+                ${createResourceButtons(data, index, "grade11")} 
 
             </div>
 
